@@ -1,6 +1,8 @@
 package br.com.zup.Cadastros.cadastro;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -9,6 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class CadastroController {
     @Autowired
     private CadastroService cadastroService;
+
+    @PutMapping
+    public void cadastrarPessoa(@RequestBody Cadastro novoCadastro){
+        cadastroService.cadastrarPessoa(novoCadastro);
+    }
 
     /*
     todo  1 - crie um metodo para cadastrar uma pessoa.
