@@ -1,10 +1,9 @@
 package br.com.zup.Cadastros.cadastro;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/cadastros")
@@ -16,6 +15,27 @@ public class CadastroController {
     public void cadastrarPessoa(@RequestBody Cadastro novoCadastro){
         cadastroService.cadastrarPessoa(novoCadastro);
     }
+    @GetMapping
+    public List<Cadastro> exibirListaCadastro(){
+        return cadastroService.exibirListaCadastro();
+
+    }
+
+    @RequestMapping("/moraSozinho")
+    @GetMapping
+    public List<Cadastro> exibirListaMoraSozinho(){
+        return cadastroService.exibirListaMoraSozinho();
+
+    }
+
+    @RequestMapping("/temPet")
+    @GetMapping
+    public List<Cadastro> exibirListaTemPet(){
+        return cadastroService.exibirListaTemPet();
+
+    }
+
+
 
     /*
     todo  1 - crie um metodo para cadastrar uma pessoa.
