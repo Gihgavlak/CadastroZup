@@ -1,9 +1,11 @@
 package br.com.zup.Cadastros.cadastro;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class CadastroService {
@@ -27,9 +29,30 @@ public class CadastroService {
         cadastroRepository.save(novoCadastro);
 
     }
+    public List<Cadastro> exibirListaCadastro () {
+        Iterable<Cadastro> listaCadastros = cadastroRepository.findAll();
+        return (List<Cadastro>) listaCadastros;
+    }
 
     public LocalDate retornarDataAtual(){
         LocalDate data = LocalDate.now();
         return data;
     }
+
+    public List<Cadastro> exibirListaMoraSozinho () {
+        Iterable<Cadastro> listaCadastros = cadastroRepository.exibirListaMoraSozinho();
+        return (List<Cadastro>) listaCadastros;
+    }
+
+    public List<Cadastro> exibirListaTemPet() {
+        Iterable<Cadastro> listaCadastros = cadastroRepository.exibirListaTemPet();
+        return (List<Cadastro>) listaCadastros;
+    }
+
 }
+
+/*
+@Query("SELECT u FROM User u WHERE u.status = 1")
+Collection<User> findAllActiveUsers();
+
+ */
